@@ -1,6 +1,6 @@
 package messaging
 
-const RUN_QUERY_TASK = "tasks.run_query"
+const TASK_RUN_QUERY = "tasks.run_query"
 
 /**
  * Run query

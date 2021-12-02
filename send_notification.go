@@ -2,6 +2,8 @@ package messaging
 
 import "github.com/google/uuid"
 
+const TASK_SEND_NOTIFICATION = "tasks.send_notification"
+
 /**
  * Send SMS
  */

@@ -1,6 +1,6 @@
 package messaging
 
-const CHECK_CONDITION = "tasks.check_condition"
+const TASK_CHECK_CONDITION = "tasks.check_condition"
 
 /**
  * Run query

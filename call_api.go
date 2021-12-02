@@ -1,10 +1,12 @@
 package messaging
 
+const TASK_CALL_API = "tasks.call_api"
+
 type CallApi struct {
 	Task
-	URL              string
-	Method           string
-	Payload          []byte
-	ContentType      string
-	AttachedFileName string
+	URL              string `json:"url"`
+	Method           string `json:"method"`
+	Payload          []byte `json:"payload"`
+	ContentType      string `json:"content_type"`
+	AttachedFileName string `json:"attached_file_name"`
 }

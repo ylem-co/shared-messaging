@@ -76,7 +76,7 @@ func NewEnvelope(msg interface{}) *Envelope {
 
 func newMsg(messageName string) interface{} {
 	switch messageName {
-	case RUN_QUERY_TASK:
+	case TASK_RUN_QUERY:
 		return &RunQueryTask{}
 	}
 
@@ -86,7 +86,7 @@ func newMsg(messageName string) interface{} {
 func getMessageName(msg interface{}) string {
 	switch msg.(type) {
 	case *RunQueryTask:
-		return RUN_QUERY_TASK
+		return TASK_RUN_QUERY
 
 	case *TaskRun:
 		return TASK_RUN
