@@ -10,6 +10,7 @@ import (
 
 const (
 	HEADER_MESSAGE_NAME = "X-Message-Name"
+	DATE_TIME_FORMAT    = "2006-01-02 15:04:05"
 )
 
 type Envelope struct {
@@ -123,6 +124,7 @@ type Task struct {
 type TaskRun struct {
 	Uuid             uuid.UUID     `json:"uuid"`
 	TaskUuid         uuid.UUID     `json:"task_uuid"`
+	TaskType         string        `json:"task_type"`
 	WorkflowUuid     uuid.UUID     `json:"workflow_uuid"`
 	OrganizationUuid uuid.UUID     `json:"organization_uuid"`
 	CreatorUuid      uuid.UUID     `json:"creator_uuid"`
@@ -132,6 +134,17 @@ type TaskRun struct {
 	Output           []byte        `json:"output"`
 	ExecutedAt       time.Time     `json:"executedAt"`
 	Duration         time.Duration `json:"duration"`
+}
+
+func (tr TaskRun) MarshalJSON() ([]byte, error) {
+	type Alias TaskRun
+	return json.Marshal(&struct {
+		ExecutedAt string `json:"executed_at"`
+		Alias
+	}{
+		ExecutedAt: tr.ExecutedAt.Format(DATE_TIME_FORMAT),
+		Alias:      Alias(tr),
+	})
 }
 
 func NewTaskRun(taskUuid uuid.UUID) *TaskRun {
