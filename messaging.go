@@ -136,6 +136,7 @@ type TaskRun struct {
 
 func NewTaskRun(taskUuid uuid.UUID) *TaskRun {
 	return &TaskRun{
+		Uuid:     uuid.New(),
 		TaskUuid: taskUuid,
 		Output:   make([]byte, 0),
 	}
