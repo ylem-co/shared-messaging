@@ -79,6 +79,16 @@ func newMsg(messageName string) interface{} {
 	switch messageName {
 	case TASK_RUN_QUERY:
 		return &RunQueryTask{}
+
+	case TASK_CHECK_CONDITION:
+		return &CheckConditionTask{}
+
+	case TASK_CALL_API:
+		return &CallApiTask{}
+
+	case TASK_SEND_NOTIFICATION:
+		return &SendNotificationTask{}
+
 	}
 
 	return nil
@@ -88,6 +98,15 @@ func getMessageName(msg interface{}) string {
 	switch msg.(type) {
 	case *RunQueryTask:
 		return TASK_RUN_QUERY
+
+	case *CallApiTask:
+		return TASK_CALL_API
+
+	case *CheckConditionTask:
+		return TASK_CHECK_CONDITION
+
+	case *SendNotificationTask:
+		return TASK_SEND_NOTIFICATION
 
 	case *TaskRun:
 		return TASK_RUN

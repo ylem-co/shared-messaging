@@ -2,7 +2,7 @@ package messaging
 
 const TASK_CALL_API = "tasks.call_api"
 
-type CallApi struct {
+type CallApiTask struct {
 	Task
 	URL              string `json:"url"`
 	Method           string `json:"method"`
