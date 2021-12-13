@@ -1,5 +1,7 @@
 package messaging
 
+import "github.com/google/uuid"
+
 const TASK_RUN_QUERY = "tasks.run_query"
 
 /**
@@ -12,5 +14,5 @@ type RunQueryTask struct {
 }
 
 type Source struct {
-	DSN string `json:"dsn"`
+	Uuid uuid.UUID `json:"uuid"`
 }
