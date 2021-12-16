@@ -1,6 +1,6 @@
 package messaging
 
-const TASK_CALL_API = "tasks.call_api"
+const TaskCallApiMessageName = "tasks.call_api"
 
 type CallApiTask struct {
 	Task

@@ -9,8 +9,8 @@ import (
 )
 
 const (
-	HEADER_MESSAGE_NAME = "X-Message-Name"
-	DATE_TIME_FORMAT    = "2006-01-02 15:04:05"
+	HeaderMessageName = "X-Message-Name"
+	DateTimeFormat    = "2006-01-02 15:04:05"
 )
 
 type Envelope struct {
@@ -30,7 +30,7 @@ func (e *Envelope) WithHeader(header string, value string) *Envelope {
 
 func (e *Envelope) SetMsg(msg interface{}) {
 	e.Msg = msg
-	e.Headers[HEADER_MESSAGE_NAME] = getMessageName(msg)
+	e.Headers[HeaderMessageName] = getMessageName(msg)
 }
 
 func (e *Envelope) UnmarshalJSON(input []byte) error {
@@ -42,9 +42,9 @@ func (e *Envelope) UnmarshalJSON(input []byte) error {
 		return err
 	}
 
-	val, ok := s.Headers[HEADER_MESSAGE_NAME]
+	val, ok := s.Headers[HeaderMessageName]
 	if !ok || val == "" {
-		return fmt.Errorf("mandatory header %s is not found", HEADER_MESSAGE_NAME)
+		return fmt.Errorf("mandatory header %s is not found", HeaderMessageName)
 	}
 
 	msg := newMsg(val)
@@ -77,18 +77,23 @@ func NewEnvelope(msg interface{}) *Envelope {
 
 func newMsg(messageName string) interface{} {
 	switch messageName {
-	case TASK_RUN_QUERY:
+	case TaskRunQueryMessageName:
 		return &RunQueryTask{}
 
-	case TASK_CHECK_CONDITION:
+	case TaskCheckConditionMessageName:
 		return &CheckConditionTask{}
 
-	case TASK_CALL_API:
+	case TaskAggregateDataMessageName:
+		return &AggregateDataTask{}
+
+	case TaskTransformDataMessageName:
+		return &TransformDataTask{}
+
+	case TaskCallApiMessageName:
 		return &CallApiTask{}
 
-	case TASK_SEND_NOTIFICATION:
+	case TaskSendNotificationMessageName:
 		return &SendNotificationTask{}
-
 	}
 
 	return nil
@@ -97,19 +102,25 @@ func newMsg(messageName string) interface{} {
 func getMessageName(msg interface{}) string {
 	switch msg.(type) {
 	case *RunQueryTask:
-		return TASK_RUN_QUERY
-
-	case *CallApiTask:
-		return TASK_CALL_API
+		return TaskRunQueryMessageName
 
 	case *CheckConditionTask:
-		return TASK_CHECK_CONDITION
+		return TaskCheckConditionMessageName
+
+	case *AggregateDataTask:
+		return TaskAggregateDataMessageName
+
+	case *TransformDataTask:
+		return TaskTransformDataMessageName
 
 	case *SendNotificationTask:
-		return TASK_SEND_NOTIFICATION
+		return TaskSendNotificationMessageName
 
-	case *TaskRun:
-		return TASK_RUN
+	case *CallApiTask:
+		return TaskCallApiMessageName
+
+	case *TaskRunResult:
+		return TaskRunResultMessageName
 
 	default:
 		return ""
@@ -129,7 +140,7 @@ func (c *MessageCodec) Decode(data []byte) (interface{}, error) {
 }
 
 const (
-	TASK_RUN = "tasks.task_run"
+	TaskRunResultMessageName = "result.task_run"
 )
 
 type Task struct {
@@ -140,7 +151,7 @@ type Task struct {
 	Input            []byte    `json:"input"`
 }
 
-type TaskRun struct {
+type TaskRunResult struct {
 	Uuid             uuid.UUID     `json:"uuid"`
 	TaskUuid         uuid.UUID     `json:"task_uuid"`
 	TaskType         string        `json:"task_type"`
@@ -155,19 +166,19 @@ type TaskRun struct {
 	Duration         time.Duration `json:"duration"`
 }
 
-func (tr TaskRun) MarshalJSON() ([]byte, error) {
-	type Alias TaskRun
+func (tr TaskRunResult) MarshalJSON() ([]byte, error) {
+	type Alias TaskRunResult
 	return json.Marshal(&struct {
 		ExecutedAt string `json:"executed_at"`
 		Alias
 	}{
-		ExecutedAt: tr.ExecutedAt.Format(DATE_TIME_FORMAT),
+		ExecutedAt: tr.ExecutedAt.Format(DateTimeFormat),
 		Alias:      Alias(tr),
 	})
 }
 
-func NewTaskRun(taskUuid uuid.UUID) *TaskRun {
-	return &TaskRun{
+func NewTaskRunResult(taskUuid uuid.UUID) *TaskRunResult {
+	return &TaskRunResult{
 		Uuid:     uuid.New(),
 		TaskUuid: taskUuid,
 		Output:   make([]byte, 0),

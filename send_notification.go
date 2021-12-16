@@ -2,11 +2,8 @@ package messaging
 
 import "github.com/google/uuid"
 
-const TASK_SEND_NOTIFICATION = "tasks.send_notification"
+const TaskSendNotificationMessageName = "tasks.send_notification"
 
-/**
- * Send SMS
- */
 type SendNotificationTask struct {
 	Task
 	Name        string      `json:"name"`
