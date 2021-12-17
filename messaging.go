@@ -141,6 +141,8 @@ func (c *MessageCodec) Decode(data []byte) (interface{}, error) {
 
 const (
 	TaskRunResultMessageName = "result.task_run"
+	ErrorSeverityError       = "error"
+	ErrorSeverityWarning     = "warning"
 )
 
 type Task struct {
@@ -151,19 +153,25 @@ type Task struct {
 	Input            []byte    `json:"input"`
 }
 
+type TaskRunError struct {
+	Code     uint
+	Severity string
+	Message  string
+}
+
 type TaskRunResult struct {
-	Uuid             uuid.UUID     `json:"uuid"`
-	TaskUuid         uuid.UUID     `json:"task_uuid"`
-	TaskType         string        `json:"task_type"`
-	WorkflowUuid     uuid.UUID     `json:"workflow_uuid"`
-	OrganizationUuid uuid.UUID     `json:"organization_uuid"`
-	CreatorUuid      uuid.UUID     `json:"creator_uuid"`
-	ReturnCode       int           `json:"return_code"`
-	Err              error         `json:"err"`
-	Input            []byte        `json:"input"`
-	Output           []byte        `json:"output"`
-	ExecutedAt       time.Time     `json:"executedAt"`
-	Duration         time.Duration `json:"duration"`
+	IsSuccessful     bool           `json:"is_successful"`
+	Errors           []TaskRunError `json:"errors"`
+	Uuid             uuid.UUID      `json:"uuid"`
+	TaskUuid         uuid.UUID      `json:"task_uuid"`
+	TaskType         string         `json:"task_type"`
+	WorkflowUuid     uuid.UUID      `json:"workflow_uuid"`
+	OrganizationUuid uuid.UUID      `json:"organization_uuid"`
+	CreatorUuid      uuid.UUID      `json:"creator_uuid"`
+	Input            []byte         `json:"input"`
+	Output           []byte         `json:"output"`
+	ExecutedAt       time.Time      `json:"executedAt"`
+	Duration         time.Duration  `json:"duration"`
 }
 
 func (tr TaskRunResult) MarshalJSON() ([]byte, error) {
