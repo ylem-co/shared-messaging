@@ -94,6 +94,9 @@ func newMsg(messageName string) interface{} {
 
 	case TaskSendNotificationMessageName:
 		return &SendNotificationTask{}
+
+	case TaskRunResultMessageName:
+		return &TaskRunResult{}
 	}
 
 	return nil
