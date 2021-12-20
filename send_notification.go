@@ -1,25 +1,14 @@
 package messaging
 
-import "github.com/google/uuid"
-
 const TaskSendNotificationMessageName = "tasks.send_notification"
 
 type SendNotificationTask struct {
 	Task
-	Name        string      `json:"name"`
-	Type        string      `json:"type"`
-	Body        string      `json:"body"`
-	Destination Destination `json:"destination"`
-}
-
-type Destination struct {
-	Uuid               uuid.UUID          `json:"uuid"`
+	Name               string             `json:"name"`
 	Type               string             `json:"type"`
-	AuthType           string             `json:"auth_type"`
-	AuthToken          string             `json:"auth_token"`
-	Code               string             `json:"code"`
+	Body               string             `json:"body"`
+	Destination        Destination        `json:"destination"`
 	SlackAuthorization SlackAuthorization `json:"slack_authorization"`
-	SlackChannelId     string             `json:"slack_channel_id"`
 }
 
 type SlackAuthorization struct {
