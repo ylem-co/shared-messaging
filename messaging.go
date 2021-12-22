@@ -149,10 +149,14 @@ const (
 )
 
 type Task struct {
+	WorkflowRunUuid  uuid.UUID `json:"workflow_run_uuid"`
+	TaskRunUuid      uuid.UUID `json:"task_run_uuid"`
 	TaskUuid         uuid.UUID `json:"task_uuid"`
 	WorkflowUuid     uuid.UUID `json:"workflow_uuid"`
 	OrganizationUuid uuid.UUID `json:"organization_uuid"`
 	CreatorUuid      uuid.UUID `json:"creator_uuid"`
+	IsInitialTask    bool      `json:"is_initial_task"`
+	IsFinalTask      bool      `json:"is_final_task"`
 	Input            []byte    `json:"input"`
 }
 
@@ -163,6 +167,8 @@ type TaskRunError struct {
 }
 
 type TaskRunResult struct {
+	WorkflowRunUuid  uuid.UUID      `json:"workflow_run_uuid"`
+	TaskRunUuid      uuid.UUID      `json:"task_run_uuid"`
 	IsSuccessful     bool           `json:"is_successful"`
 	Errors           []TaskRunError `json:"errors"`
 	Uuid             uuid.UUID      `json:"uuid"`
@@ -171,6 +177,8 @@ type TaskRunResult struct {
 	WorkflowUuid     uuid.UUID      `json:"workflow_uuid"`
 	OrganizationUuid uuid.UUID      `json:"organization_uuid"`
 	CreatorUuid      uuid.UUID      `json:"creator_uuid"`
+	IsInitialTask    bool           `json:"is_initial_task"`
+	IsFinalTask      bool           `json:"is_final_task"`
 	Input            []byte         `json:"input"`
 	Output           []byte         `json:"output"`
 	ExecutedAt       time.Time      `json:"executedAt"`
