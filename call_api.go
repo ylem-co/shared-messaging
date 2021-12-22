@@ -4,12 +4,14 @@ const TaskCallApiMessageName = "tasks.call_api"
 
 type CallApiTask struct {
 	Task
-	Type             string         `json:"type"`
-	Payload          string         `json:"payload"`
-	QueryString      string         `json:"query_string"`
-	Headers          string         `json:"headers"`
-	AttachedFileName string         `json:"attached_file_name"`
-	Destination      ApiDestination `json:"destination"`
+	Type                string         `json:"type"`
+	Payload             string         `json:"payload"`
+	QueryString         string         `json:"query_string"`
+	Headers             string         `json:"headers"`
+	Severity            string         `json:"severity"`
+	AttachedFileName    string         `json:"attached_file_name"`
+	AttachedFilePayload []byte         `json:"attached_file_payload"`
+	Destination         ApiDestination `json:"destination"`
 }
 
 type ApiDestination struct {
