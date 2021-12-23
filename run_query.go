@@ -2,7 +2,25 @@ package messaging
 
 import "github.com/google/uuid"
 
-const TaskRunQueryMessageName = "tasks.run_query"
+const (
+	TaskRunQueryMessageName = "tasks.run_query"
+
+	SourceStatusNew = "new"
+	SourceStatusOnline = "online"
+	SourceStatusOffline = "offline"
+
+	SourceTypeMySQL = "mysql"
+	SourceTypeSnowflake = "snowflake"
+	SourceTypePostgresql = "postgresql"
+	SourceTypeAWSRDS = "aws-rds"
+	SourceTypeGoogleCloudSQL = "google-cloud-sql"
+	SourceTypeMicrosoftAzureSQL = "microsoft-azure-sql"
+
+	SourceConnectionTypeDirect = "direct"
+	SourceConnectionTypeSsh = "ssh"
+
+	ErrorRunQueryTaskFailure = 10000
+)
 
 type RunQueryTask struct {
 	Task
@@ -27,17 +45,3 @@ type Source struct {
 	SshPort          int       `json:"ssh_port,omitempty"`
 	SshUser          string    `json:"ssh_user,omitempty"`
 }
-
-const SourceStatusNew = "new"
-const SourceStatusOnline = "online"
-const SourceStatusOffline = "offline"
-
-const SourceTypeMySQL = "mysql"
-const SourceTypeSnowflake = "snowflake"
-const SourceTypePostgresql = "postgresql"
-const SourceTypeAWSRDS = "aws-rds"
-const SourceTypeGoogleCloudSQL = "google-cloud-sql"
-const SourceTypeMicrosoftAzureSQL = "microsoft-azure-sql"
-
-const SourceConnectionTypeDirect = "direct"
-const SourceConnectionTypeSsh = "ssh"

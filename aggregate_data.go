@@ -1,6 +1,10 @@
 package messaging
 
-const TaskAggregateDataMessageName = "tasks.aggregate_data"
+const (
+	TaskAggregateDataMessageName = "tasks.aggregate_data"
+
+	ErrorAggregateDataTaskFailure = 10500
+)
 
 type AggregateDataTask struct {
 	Task

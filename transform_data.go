@@ -1,6 +1,10 @@
 package messaging
 
-const TaskTransformDataMessageName = "tasks.transform_data"
+const (
+	TaskTransformDataMessageName = "tasks.transform_data"
+
+	ErrorTransformDataTaskFailure = 10300
+)
 
 type TransformDataTask struct {
 	Task

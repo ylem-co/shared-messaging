@@ -11,6 +11,11 @@ import (
 const (
 	HeaderMessageName = "X-Message-Name"
 	DateTimeFormat    = "2006-01-02 15:04:05"
+
+	// The codes here should be up to 9999. This is general error codes space
+	ErrorMessageDeserialization = 100
+	ErrorBadRequest = 200
+	ErrorUnknownTaskType = 9999
 )
 
 type Envelope struct {

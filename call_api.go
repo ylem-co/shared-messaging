@@ -1,6 +1,14 @@
 package messaging
 
-const TaskCallApiMessageName = "tasks.call_api"
+const (
+	TaskCallApiMessageName = "tasks.call_api"
+
+	ApiAuthTypeBasic = "Basic"
+	ApiAuthTypeBearer = "Bearer"
+	ApiAuthTypeHeader = "Header"
+
+	ErrorCallApiTaskFailure = 10200
+)
 
 type CallApiTask struct {
 	Task
@@ -10,7 +18,7 @@ type CallApiTask struct {
 	Headers             map[string]string `json:"headers"`
 	Severity            string            `json:"severity"`
 	AttachedFileName    string            `json:"attached_file_name"`
-	AttachedFilePayload []byte            `json:"attached_file_payload"`
+	AttachedFileContent []byte            `json:"attached_file_content"`
 	Destination         ApiDestination    `json:"destination"`
 }
 
