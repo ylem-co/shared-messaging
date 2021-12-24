@@ -20,6 +20,7 @@ const (
 	SourceConnectionTypeSsh = "ssh"
 
 	ErrorRunQueryTaskFailure = 10000
+	ErrorRunQueryTaskOpenConnection = 10001
 )
 
 type RunQueryTask struct {
