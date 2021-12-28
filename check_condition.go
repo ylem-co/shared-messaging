@@ -10,3 +10,8 @@ type CheckConditionTask struct {
 	Task
 	Expression string `json:"expression"`
 }
+
+type ConditionResult struct {
+	Result        bool
+	OriginalInput []byte
+}
