@@ -24,7 +24,6 @@ type SendNotificationTask struct {
 	SlackConfiguration  SlackConfiguration `json:"slack_configuration"`
 	Severity            string             `json:"severity"`
 	AttachedFileName    string             `json:"attached_file_name"`
-	AttachedFileContent []byte             `json:"attached_file_content"`
 }
 
 type SlackConfiguration struct {
