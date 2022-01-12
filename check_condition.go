@@ -12,6 +12,6 @@ type CheckConditionTask struct {
 }
 
 type ConditionResult struct {
-	Result        bool
-	OriginalInput []byte
+	Result        bool   `json:"result"`
+	OriginalInput []byte `json:"original_input"`
 }
