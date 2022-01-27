@@ -5,21 +5,22 @@ import "github.com/google/uuid"
 const (
 	TaskRunQueryMessageName = "tasks.run_query"
 
-	SourceStatusNew = "new"
-	SourceStatusOnline = "online"
+	SourceStatusNew     = "new"
+	SourceStatusOnline  = "online"
 	SourceStatusOffline = "offline"
 
-	SourceTypeMySQL = "mysql"
-	SourceTypeSnowflake = "snowflake"
-	SourceTypePostgresql = "postgresql"
-	SourceTypeAWSRDS = "aws-rds"
-	SourceTypeGoogleCloudSQL = "google-cloud-sql"
+	SourceTypeMySQL             = "mysql"
+	SourceTypeSnowflake         = "snowflake"
+	SourceTypePostgresql        = "postgresql"
+	SourceTypeAWSRDS            = "aws-rds"
+	SourceTypeGoogleCloudSQL    = "google-cloud-sql"
+	SourceTypeGoogleBigQuery    = "google-bigquery"
 	SourceTypeMicrosoftAzureSQL = "microsoft-azure-sql"
 
 	SourceConnectionTypeDirect = "direct"
-	SourceConnectionTypeSsh = "ssh"
+	SourceConnectionTypeSsh    = "ssh"
 
-	ErrorRunQueryTaskFailure = 10000
+	ErrorRunQueryTaskFailure        = 10000
 	ErrorRunQueryTaskOpenConnection = 10001
 )
 
@@ -45,4 +46,6 @@ type Source struct {
 	SshHost          string    `json:"ssh_host,omitempty"`
 	SshPort          int       `json:"ssh_port,omitempty"`
 	SshUser          string    `json:"ssh_user,omitempty"`
+	ProjectId        string    `json:"project_id,omitempty"`
+	Credentials      string    `json:"credentials,omitempty"`
 }
