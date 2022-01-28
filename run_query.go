@@ -43,6 +43,7 @@ type Source struct {
 	Password         string    `json:"password"`
 	Database         string    `json:"database,omitempty"`
 	ConnectionType   string    `json:"connection_type"`
+	SslEnabled       bool      `json:"ssl_enabled,omitempty"`
 	SshHost          string    `json:"ssh_host,omitempty"`
 	SshPort          int       `json:"ssh_port,omitempty"`
 	SshUser          string    `json:"ssh_user,omitempty"`
