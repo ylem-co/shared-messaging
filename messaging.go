@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
+	log "github.com/sirupsen/logrus"
 )
 
 const (
@@ -146,13 +147,16 @@ func getMessageName(msg interface{}) string {
 type MessageCodec struct{}
 
 func (c *MessageCodec) Encode(value interface{}) ([]byte, error) {
-
 	return json.Marshal(value)
 }
 
 func (c *MessageCodec) Decode(data []byte) (interface{}, error) {
 	e := &Envelope{}
-	return e, json.Unmarshal(data, e)
+	err := json.Unmarshal(data, e)
+	if err != nil {
+		log.Error(err)
+	}
+	return e, nil
 }
 
 const (
