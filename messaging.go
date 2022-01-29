@@ -154,7 +154,7 @@ func (c *MessageCodec) Decode(data []byte) (interface{}, error) {
 	e := &Envelope{}
 	err := json.Unmarshal(data, e)
 	if err != nil {
-		log.Error(err)
+		log.Errorf("Message decoding failure: %s", err)
 	}
 	return e, nil
 }
