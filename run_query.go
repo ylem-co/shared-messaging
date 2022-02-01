@@ -16,6 +16,8 @@ const (
 	SourceTypeGoogleCloudSQL    = "google-cloud-sql"
 	SourceTypeGoogleBigQuery    = "google-bigquery"
 	SourceTypeMicrosoftAzureSQL = "microsoft-azure-sql"
+	SourceTypePlanetScale       = "planet-scale"
+	SourceTypeImmuta            = "immuta"
 
 	SourceConnectionTypeDirect = "direct"
 	SourceConnectionTypeSsh    = "ssh"
