@@ -179,7 +179,7 @@ type Task struct {
 }
 
 type meta struct {
-	SqlQueryColumns []string
+	SqlQueryColumnOrder []string
 }
 
 type TaskRunError struct {
