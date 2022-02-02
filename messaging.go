@@ -175,6 +175,11 @@ type Task struct {
 	IsInitialTask    bool      `json:"is_initial_task"`
 	IsFinalTask      bool      `json:"is_final_task"`
 	Input            []byte    `json:"input"`
+	Meta             meta      `json:"meta"`
+}
+
+type meta struct {
+	SqlQueryColumns []string
 }
 
 type TaskRunError struct {
@@ -200,6 +205,7 @@ type TaskRunResult struct {
 	Output           []byte         `json:"output"`
 	ExecutedAt       time.Time      `json:"executedAt"`
 	Duration         time.Duration  `json:"duration"`
+	Meta             meta           `json:"meta"`
 }
 
 func (tr TaskRunResult) MarshalJSON() ([]byte, error) {
