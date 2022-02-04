@@ -175,10 +175,10 @@ type Task struct {
 	IsInitialTask    bool      `json:"is_initial_task"`
 	IsFinalTask      bool      `json:"is_final_task"`
 	Input            []byte    `json:"input"`
-	Meta             meta      `json:"meta"`
+	Meta             Meta      `json:"meta"`
 }
 
-type meta struct {
+type Meta struct {
 	SqlQueryColumnOrder []string
 }
 
@@ -205,7 +205,7 @@ type TaskRunResult struct {
 	Output           []byte         `json:"output"`
 	ExecutedAt       time.Time      `json:"executedAt"`
 	Duration         time.Duration  `json:"duration"`
-	Meta             meta           `json:"meta"`
+	Meta             Meta           `json:"meta"`
 }
 
 func (tr TaskRunResult) MarshalJSON() ([]byte, error) {
