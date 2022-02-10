@@ -20,6 +20,7 @@ const (
 	TaskTypeTransformer  = "transformer"
 	TaskTypeNotification = "notification"
 	TaskTypeApiCall      = "api_call"
+	TaskTypeForEach      = "for_each"
 
 	// The codes here should be up to 9999. This is general error codes space
 	ErrorMessageDeserialization = 100
@@ -94,6 +95,9 @@ func newMsg(messageName string) interface{} {
 	case TaskRunQueryMessageName:
 		return &RunQueryTask{}
 
+	case TaskRunForEachMessageName:
+		return &RunForEachTask{}
+
 	case TaskCheckConditionMessageName:
 		return &CheckConditionTask{}
 
@@ -120,6 +124,9 @@ func getMessageName(msg interface{}) string {
 	switch msg.(type) {
 	case *RunQueryTask:
 		return TaskRunQueryMessageName
+
+	case *RunForEachTask:
+		return TaskRunForEachMessageName
 
 	case *CheckConditionTask:
 		return TaskCheckConditionMessageName
