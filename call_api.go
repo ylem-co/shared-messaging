@@ -7,7 +7,8 @@ const (
 	ApiAuthTypeBearer = "Bearer"
 	ApiAuthTypeHeader = "Header"
 
-	ErrorCallApiTaskFailure = 10200
+	ErrorCallApiTaskFailure            = 10200
+	ErrorCallApiTaskDestinationOffline = 10201
 )
 
 type CallApiTask struct {
