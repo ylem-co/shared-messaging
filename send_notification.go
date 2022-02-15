@@ -13,9 +13,10 @@ const (
 	NotificationTypeEmail = "email"
 	NotificationTypeSlack = "slack"
 
-	ErrorSendNotificationTaskFailure          = 10100
-	ErrorSendNotificationTaskUnconfirmedEmail = 10101
-	ErrorSendNotificationTaskUnconfirmedSms   = 10102
+	ErrorSendNotificationTaskFailure            = 10100
+	ErrorSendNotificationTaskDestinationOffline = 10101
+	ErrorSendNotificationTaskUnconfirmedEmail   = 10102
+	ErrorSendNotificationTaskUnconfirmedSms     = 10103
 )
 
 type SendNotificationTask struct {
