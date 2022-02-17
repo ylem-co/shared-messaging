@@ -3,6 +3,7 @@ package messaging
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/datamin-io/messaging/customers"
 	"time"
 
 	"github.com/google/uuid"
@@ -115,13 +116,19 @@ func newMsg(messageName string) interface{} {
 
 	case TaskRunResultMessageName:
 		return &TaskRunResult{}
+
+	case customers.CustomerPasswordRecoveryRequestedMessageName:
+		return &customers.CustomerPasswordRecoveryRequested{}
+
+	case customers.CustomerRegisteredMessageName:
+		return &customers.CustomerRegistered{}
 	}
 
 	return nil
 }
 
 func getMessageName(msg interface{}) string {
-	switch msg.(type) {
+	switch in := msg.(type) {
 	case *RunQueryTask:
 		return TaskRunQueryMessageName
 
@@ -145,6 +152,12 @@ func getMessageName(msg interface{}) string {
 
 	case *TaskRunResult:
 		return TaskRunResultMessageName
+
+	case *customers.CustomerPasswordRecoveryRequested:
+		return in.GetMacawMessageKey()
+
+	case *customers.CustomerRegistered:
+		return in.GetMacawMessageKey()
 
 	default:
 		return ""
