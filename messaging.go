@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/datamin-io/messaging/customers"
+	"github.com/datamin-io/messaging/macaw"
+	"github.com/datamin-io/messaging/sources"
 	"time"
 
 	"github.com/google/uuid"
@@ -122,6 +124,9 @@ func newMsg(messageName string) interface{} {
 
 	case customers.CustomerRegisteredMessageName:
 		return &customers.CustomerRegistered{}
+
+	case sources.SourceStatusToggledMessageName:
+		return &sources.SourceStatusToggled{}
 	}
 
 	return nil
@@ -153,11 +158,10 @@ func getMessageName(msg interface{}) string {
 	case *TaskRunResult:
 		return TaskRunResultMessageName
 
-	case *customers.CustomerPasswordRecoveryRequested:
-		return in.GetMacawMessageKey()
-
-	case *customers.CustomerRegistered:
-		return in.GetMacawMessageKey()
+	case *customers.CustomerRegistered,
+	*customers.CustomerPasswordRecoveryRequested,
+	*sources.SourceStatusToggled:
+		return in.(macaw.Message).GetMacawMessageKey()
 
 	default:
 		return ""
