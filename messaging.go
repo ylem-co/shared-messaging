@@ -125,6 +125,9 @@ func newMsg(messageName string) interface{} {
 	case customers.CustomerRegisteredMessageName:
 		return &customers.CustomerRegistered{}
 
+	case customers.CustomerInviteSentMessageName:
+		return &customers.CustomerInviteSent{}
+
 	case sources.SourceStatusToggledMessageName:
 		return &sources.SourceStatusToggled{}
 	}
@@ -160,6 +163,7 @@ func getMessageName(msg interface{}) string {
 
 	case *customers.CustomerRegistered,
 	*customers.CustomerPasswordRecoveryRequested,
+	*customers.CustomerInviteSent,
 	*sources.SourceStatusToggled:
 		return in.(macaw.Message).GetMacawMessageKey()
 
