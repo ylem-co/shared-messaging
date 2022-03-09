@@ -1,8 +1,8 @@
 package customers
 
-const CustomerInviteSentMessageName = "customer.invite_sent"
+const CustomerSendInviteMessageName = "customer.send_invite"
 
-type CustomerInviteSent struct {
+type CustomerSendInvite struct {
 	Code             string `json:"code"`
 	Email            string `json:"email"`
 	Firstname        string `json:"first_name"`
@@ -10,6 +10,6 @@ type CustomerInviteSent struct {
 	OrganizationName string `json:"organization_name"`
 }
 
-func (m *CustomerInviteSent) GetMacawMessageKey() string {
-	return CustomerInviteSentMessageName
+func (m *CustomerSendInvite) GetMacawMessageKey() string {
+	return CustomerSendInviteMessageName
 }
