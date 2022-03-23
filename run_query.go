@@ -39,16 +39,17 @@ type Source struct {
 	Status           string    `json:"status"`
 	Type             string    `json:"type"`
 	Name             string    `json:"name"`
-	Host             string    `json:"host"`
+	DataKey          []byte    `json:"data_key"`
+	Host             []byte    `json:"host"`
 	Port             int       `json:"port,omitempty"`
 	User             string    `json:"user,omitempty"`
-	Password         string    `json:"password"`
+	Password         []byte    `json:"password"`
 	Database         string    `json:"database,omitempty"`
 	ConnectionType   string    `json:"connection_type"`
 	SslEnabled       bool      `json:"ssl_enabled,omitempty"`
-	SshHost          string    `json:"ssh_host,omitempty"`
+	SshHost          []byte    `json:"ssh_host,omitempty"`
 	SshPort          int       `json:"ssh_port,omitempty"`
 	SshUser          string    `json:"ssh_user,omitempty"`
 	ProjectId        string    `json:"project_id,omitempty"`
-	Credentials      string    `json:"credentials,omitempty"`
+	Credentials      []byte    `json:"credentials,omitempty"`
 }
