@@ -3,15 +3,16 @@ package messaging
 const (
 	TaskSendNotificationMessageName = "tasks.send_notification"
 
-	TaskSeverityLowest = "lowest"
-	TaskSeverityLow = "low"
-	TaskSeverityMedium = "medium"
-	TaskSeverityHigh = "high"
+	TaskSeverityLowest   = "lowest"
+	TaskSeverityLow      = "low"
+	TaskSeverityMedium   = "medium"
+	TaskSeverityHigh     = "high"
 	TaskSeverityCritical = "critical"
 
-	NotificationTypeSms = "sms"
+	NotificationTypeSms   = "sms"
 	NotificationTypeEmail = "email"
 	NotificationTypeSlack = "slack"
+	NotificationTypeJira  = "jira"
 
 	ErrorSendNotificationTaskFailure            = 10100
 	ErrorSendNotificationTaskDestinationOffline = 10101
@@ -21,16 +22,25 @@ const (
 
 type SendNotificationTask struct {
 	Task
-	Type                string             `json:"type"`
-	Body                string             `json:"body"`
-	Destination         Destination        `json:"destination"`
-	SlackConfiguration  SlackConfiguration `json:"slack_configuration"`
-	Severity            string             `json:"severity"`
-	AttachedFileName    string             `json:"attached_file_name"`
-	IsConfirmed         bool               `json:"is_confirmed"`
+	Type               string             `json:"type"`
+	Body               string             `json:"body"`
+	Destination        Destination        `json:"destination"`
+	SlackConfiguration SlackConfiguration `json:"slack_configuration"`
+	JiraConfiguration  JiraConfiguration  `json:"jira_configuration"`
+	Severity           string             `json:"severity"`
+	AttachedFileName   string             `json:"attached_file_name"`
+	IsConfirmed        bool               `json:"is_confirmed"`
 }
 
 type SlackConfiguration struct {
 	AccessToken    string `json:"access_token"`
 	SlackChannelId string `json:"slack_channel_id"`
+}
+
+type JiraConfiguration struct {
+	Url         string `json:"url"`
+	DataKey     []byte `json:"data_key"`
+	AccessToken []byte `json:"access_token"`
+	ProjectKey  string `json:"project_key"`
+	TaskType    string `json:"task_type"`
 }
