@@ -42,5 +42,5 @@ type JiraConfiguration struct {
 	DataKey     []byte `json:"data_key"`
 	AccessToken []byte `json:"access_token"`
 	ProjectKey  string `json:"project_key"`
-	TaskType    string `json:"task_type"`
+	IssueType   string `json:"issue_type"`
 }
