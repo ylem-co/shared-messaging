@@ -18,6 +18,7 @@ const (
 	SourceTypeMicrosoftAzureSQL = "microsoft-azure-sql"
 	SourceTypePlanetScale       = "planet-scale"
 	SourceTypeImmuta            = "immuta"
+	SourceTypeElasticsearch     = "elasticsearch"
 
 	SourceConnectionTypeDirect = "direct"
 	SourceConnectionTypeSsh    = "ssh"
@@ -52,4 +53,5 @@ type Source struct {
 	SshUser          string    `json:"ssh_user,omitempty"`
 	ProjectId        string    `json:"project_id,omitempty"`
 	Credentials      []byte    `json:"credentials,omitempty"`
+	EsVersion        uint8     `json:"es_version,omitempty"`
 }
