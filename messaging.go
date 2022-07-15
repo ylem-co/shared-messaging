@@ -3,10 +3,11 @@ package messaging
 import (
 	"encoding/json"
 	"fmt"
+	"time"
+
 	"github.com/datamin-io/messaging/customers"
 	"github.com/datamin-io/messaging/macaw"
 	"github.com/datamin-io/messaging/sources"
-	"time"
 
 	"github.com/google/uuid"
 	log "github.com/sirupsen/logrus"
@@ -24,6 +25,7 @@ const (
 	TaskTypeNotification = "notification"
 	TaskTypeApiCall      = "api_call"
 	TaskTypeForEach      = "for_each"
+	TaskTypeMerge        = "merge"
 
 	// The codes here should be up to 9999. This is general error codes space
 	ErrorMessageDeserialization = 100
@@ -116,6 +118,9 @@ func newMsg(messageName string) interface{} {
 	case TaskSendNotificationMessageName:
 		return &SendNotificationTask{}
 
+	case TaskMergeMessageName:
+		return &MergeTask{}
+
 	case TaskRunResultMessageName:
 		return &TaskRunResult{}
 
@@ -158,13 +163,16 @@ func getMessageName(msg interface{}) string {
 	case *CallApiTask:
 		return TaskCallApiMessageName
 
+	case *MergeTask:
+		return TaskMergeMessageName
+
 	case *TaskRunResult:
 		return TaskRunResultMessageName
 
 	case *customers.CustomerRegistered,
-	*customers.CustomerPasswordRecoveryRequested,
-	*customers.CustomerSendInvite,
-	*sources.SourceStatusToggled:
+		*customers.CustomerPasswordRecoveryRequested,
+		*customers.CustomerSendInvite,
+		*sources.SourceStatusToggled:
 		return in.(macaw.Message).GetMacawMessageKey()
 
 	default:
@@ -208,6 +216,7 @@ type Task struct {
 
 type Meta struct {
 	SqlQueryColumnOrder []string
+	InputCount          int64 // number of inputs in "merge" block
 }
 
 type TaskRunError struct {
