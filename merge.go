@@ -8,5 +8,5 @@ const (
 
 type MergeTask struct {
 	Task
-	FieldName string `json:"field_name"`
+	FieldNames string `json:"field_names"`
 }
