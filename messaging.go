@@ -29,6 +29,7 @@ const (
 
 	// The codes here should be up to 9999. This is general error codes space
 	ErrorMessageDeserialization = 100
+	ErrorInternal               = 101
 	ErrorBadRequest             = 200
 	ErrorUnknownTaskType        = 9999
 )
