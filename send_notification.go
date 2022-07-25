@@ -48,7 +48,7 @@ type JiraConfiguration struct {
 }
 
 type IncidentIoConfiguration struct {
-	ApiKey     string `json:"api_key"`
+	ApiKey     []byte `json:"api_key"`
 	DataKey    []byte `json:"data_key"`
 	Mode       string `json:"mode"`
 	Visibility string `json:"visibility"`
