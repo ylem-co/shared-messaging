@@ -22,14 +22,15 @@ const (
 
 type SendNotificationTask struct {
 	Task
-	Type               string             `json:"type"`
-	Body               string             `json:"body"`
-	Destination        Destination        `json:"destination"`
-	SlackConfiguration SlackConfiguration `json:"slack_configuration"`
-	JiraConfiguration  JiraConfiguration  `json:"jira_configuration"`
-	Severity           string             `json:"severity"`
-	AttachedFileName   string             `json:"attached_file_name"`
-	IsConfirmed        bool               `json:"is_confirmed"`
+	Type                    string                  `json:"type"`
+	Body                    string                  `json:"body"`
+	Destination             Destination             `json:"destination"`
+	SlackConfiguration      SlackConfiguration      `json:"slack_configuration"`
+	JiraConfiguration       JiraConfiguration       `json:"jira_configuration"`
+	IncidentIoConfiguration IncidentIoConfiguration `json:"incidentio_configuration"`
+	Severity                string                  `json:"severity"`
+	AttachedFileName        string                  `json:"attached_file_name"`
+	IsConfirmed             bool                    `json:"is_confirmed"`
 }
 
 type SlackConfiguration struct {
@@ -43,4 +44,11 @@ type JiraConfiguration struct {
 	AccessToken []byte `json:"access_token"`
 	ProjectKey  string `json:"project_key"`
 	IssueType   string `json:"issue_type"`
+}
+
+type IncidentIoConfiguration struct {
+	ApiKey     string `json:"api_key"`
+	DataKey    []byte `json:"data_key"`
+	Mode       string `json:"mode"`
+	Visibility string `json:"visibility"`
 }
