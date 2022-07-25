@@ -9,10 +9,11 @@ const (
 	TaskSeverityHigh     = "high"
 	TaskSeverityCritical = "critical"
 
-	NotificationTypeSms   = "sms"
-	NotificationTypeEmail = "email"
-	NotificationTypeSlack = "slack"
-	NotificationTypeJira  = "jira"
+	NotificationTypeSms        = "sms"
+	NotificationTypeEmail      = "email"
+	NotificationTypeSlack      = "slack"
+	NotificationTypeJira       = "jira"
+	NotificationTypeIncidentIo = "incidentio"
 
 	ErrorSendNotificationTaskFailure            = 10100
 	ErrorSendNotificationTaskDestinationOffline = 10101
