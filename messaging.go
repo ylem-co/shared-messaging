@@ -209,6 +209,7 @@ type Task struct {
 	WorkflowUuid     uuid.UUID `json:"workflow_uuid"`
 	OrganizationUuid uuid.UUID `json:"organization_uuid"`
 	CreatorUuid      uuid.UUID `json:"creator_uuid"`
+	TaskName         string    `json:"task_name"`
 	IsInitialTask    bool      `json:"is_initial_task"`
 	IsFinalTask      bool      `json:"is_final_task"`
 	Input            []byte    `json:"input"`
