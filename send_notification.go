@@ -14,6 +14,7 @@ const (
 	NotificationTypeSlack      = "slack"
 	NotificationTypeJira       = "jira"
 	NotificationTypeIncidentIo = "incidentio"
+	NotificationTypeTableau    = "tableau"
 
 	ErrorSendNotificationTaskFailure            = 10100
 	ErrorSendNotificationTaskDestinationOffline = 10101
@@ -29,6 +30,7 @@ type SendNotificationTask struct {
 	SlackConfiguration      SlackConfiguration      `json:"slack_configuration"`
 	JiraConfiguration       JiraConfiguration       `json:"jira_configuration"`
 	IncidentIoConfiguration IncidentIoConfiguration `json:"incidentio_configuration"`
+	TableauConfiguration    TableauConfiguration    `json:"tableau_configuration"`
 	Severity                string                  `json:"severity"`
 	AttachedFileName        string                  `json:"attached_file_name"`
 	IsConfirmed             bool                    `json:"is_confirmed"`
@@ -52,4 +54,15 @@ type IncidentIoConfiguration struct {
 	DataKey    []byte `json:"data_key"`
 	Mode       string `json:"mode"`
 	Visibility string `json:"visibility"`
+}
+
+type TableauConfiguration struct {
+	Server         string `json:"server"`
+	DataKey        []byte `json:"data_key"`
+	Username       []byte `json:"username"`
+	Password       []byte `json:"password"`
+	Sitename       string `json:"site_name"`
+	ProjectName    string `json:"project_name"`
+	DatasourceName string `json:"datasource_name"`
+	Mode           string `json:"mode"`
 }
