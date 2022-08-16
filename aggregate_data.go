@@ -8,5 +8,6 @@ const (
 
 type AggregateDataTask struct {
 	Task
-	Expression string `json:"expression"`
+	Expression   string `json:"expression"`
+	VariableName string `json:"variable_name"`
 }
