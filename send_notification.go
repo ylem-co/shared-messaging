@@ -73,4 +73,5 @@ type HubspotConfiguration struct {
 	AccessToken  []byte `json:"access_token"`
 	RefreshToken []byte `json:"refresh_token"`
 	Pipeline     string `json:"pipeline"`
+	OwnerId      string `json:"owner_id"`
 }
