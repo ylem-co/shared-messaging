@@ -31,6 +31,7 @@ type SendNotificationTask struct {
 	JiraConfiguration       JiraConfiguration       `json:"jira_configuration"`
 	IncidentIoConfiguration IncidentIoConfiguration `json:"incidentio_configuration"`
 	TableauConfiguration    TableauConfiguration    `json:"tableau_configuration"`
+	HubspotConfiguration    HubspotConfiguration    `json:"hubspot_configuration"`
 	Severity                string                  `json:"severity"`
 	AttachedFileName        string                  `json:"attached_file_name"`
 	IsConfirmed             bool                    `json:"is_confirmed"`
@@ -65,4 +66,11 @@ type TableauConfiguration struct {
 	ProjectName    string `json:"project_name"`
 	DatasourceName string `json:"datasource_name"`
 	Mode           string `json:"mode"`
+}
+
+type HubspotConfiguration struct {
+	DataKey      []byte `json:"data_key"`
+	AccessToken  []byte `json:"access_token"`
+	RefreshToken []byte `json:"refresh_token"`
+	Pipeline     string `json:"pipeline"`
 }
