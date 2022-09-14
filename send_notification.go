@@ -15,6 +15,7 @@ const (
 	NotificationTypeJira       = "jira"
 	NotificationTypeIncidentIo = "incidentio"
 	NotificationTypeTableau    = "tableau"
+	NotificationTypeHubspot    = "hubspot"
 
 	ErrorSendNotificationTaskFailure            = 10100
 	ErrorSendNotificationTaskDestinationOffline = 10101
