@@ -72,7 +72,7 @@ type TableauConfiguration struct {
 type HubspotConfiguration struct {
 	DataKey           []byte `json:"data_key"`
 	AccessToken       []byte `json:"access_token"`
-	PipelineCode      string `json:"pipeline"`
-	PipelineStageCode string `json:"pipeline"`
-	OwnerCode         string `json:"owner_id"`
+	PipelineCode      string `json:"pipeline_code"`
+	PipelineStageCode string `json:"pipeline_stage_code"`
+	OwnerCode         string `json:"owner_code"`
 }
