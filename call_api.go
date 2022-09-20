@@ -3,12 +3,18 @@ package messaging
 const (
 	TaskCallApiMessageName = "tasks.call_api"
 
+	ApiTypeGeneric    = "generic"
+	ApiTypeSalesforce = "salesforce"
+
 	ApiAuthTypeBasic  = "Basic"
 	ApiAuthTypeBearer = "Bearer"
 	ApiAuthTypeHeader = "Header"
 
 	ErrorCallApiTaskFailure            = 10200
 	ErrorCallApiTaskDestinationOffline = 10201
+
+	SalesforceObjectTypeCase   = "case"
+	SalesforceObjectTypeCustom = "custom"
 )
 
 type CallApiTask struct {
@@ -24,11 +30,19 @@ type CallApiTask struct {
 
 type ApiDestination struct {
 	Destination
-	Method                string `json:"method"`
-	AuthType              string `json:"auth_type"`
-	AuthBearerToken       string `json:"auth_bearer_token"`
-	AuthBasicUserName     string `json:"auth_basic_user_name"`
-	AuthBasicUserPassword string `json:"auth_basic_user_password"`
-	AuthHeaderName        string `json:"auth_header_name"`
-	AuthHeaderValue       string `json:"auth_header_value"`
+	Type                  string                   `json:"type"`
+	Method                string                   `json:"method"`
+	AuthType              string                   `json:"auth_type"`
+	AuthBearerToken       string                   `json:"auth_bearer_token"`
+	AuthBasicUserName     string                   `json:"auth_basic_user_name"`
+	AuthBasicUserPassword string                   `json:"auth_basic_user_password"`
+	AuthHeaderName        string                   `json:"auth_header_name"`
+	AuthHeaderValue       string                   `json:"auth_header_value"`
+	Salesforce            SalesforceApiDestination `json:"salesforce"`
+}
+
+type SalesforceApiDestination struct {
+	OrgSubdomain     string `json:"org_subdomain"`
+	ObjectType       string `json:"object_type"`
+	CustomObjectName string `json:"custom_object_name"`
 }
