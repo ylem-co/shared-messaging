@@ -84,5 +84,5 @@ type GoogleSheetsConfiguration struct {
 	Credentials   []byte `json:"credentials"`
 	Mode          string `json:"mode"`
 	SpreadsheetId string `json:"spreadsheet_id"`
-	SheetId       string `json:"sheet_id"`
+	SheetId       int64  `json:"sheet_id"`
 }
