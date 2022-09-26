@@ -9,13 +9,14 @@ const (
 	TaskSeverityHigh     = "high"
 	TaskSeverityCritical = "critical"
 
-	NotificationTypeSms        = "sms"
-	NotificationTypeEmail      = "email"
-	NotificationTypeSlack      = "slack"
-	NotificationTypeJira       = "jira"
-	NotificationTypeIncidentIo = "incidentio"
-	NotificationTypeTableau    = "tableau"
-	NotificationTypeHubspot    = "hubspot"
+	NotificationTypeSms          = "sms"
+	NotificationTypeEmail        = "email"
+	NotificationTypeSlack        = "slack"
+	NotificationTypeJira         = "jira"
+	NotificationTypeIncidentIo   = "incidentio"
+	NotificationTypeTableau      = "tableau"
+	NotificationTypeHubspot      = "hubspot"
+	NotificationTypeGoogleSheets = "google_sheets"
 
 	ErrorSendNotificationTaskFailure            = 10100
 	ErrorSendNotificationTaskDestinationOffline = 10101
@@ -25,17 +26,18 @@ const (
 
 type SendNotificationTask struct {
 	Task
-	Type                    string                  `json:"type"`
-	Body                    string                  `json:"body"`
-	Destination             Destination             `json:"destination"`
-	SlackConfiguration      SlackConfiguration      `json:"slack_configuration"`
-	JiraConfiguration       JiraConfiguration       `json:"jira_configuration"`
-	IncidentIoConfiguration IncidentIoConfiguration `json:"incidentio_configuration"`
-	TableauConfiguration    TableauConfiguration    `json:"tableau_configuration"`
-	HubspotConfiguration    HubspotConfiguration    `json:"hubspot_configuration"`
-	Severity                string                  `json:"severity"`
-	AttachedFileName        string                  `json:"attached_file_name"`
-	IsConfirmed             bool                    `json:"is_confirmed"`
+	Type                      string                    `json:"type"`
+	Body                      string                    `json:"body"`
+	Destination               Destination               `json:"destination"`
+	SlackConfiguration        SlackConfiguration        `json:"slack_configuration"`
+	JiraConfiguration         JiraConfiguration         `json:"jira_configuration"`
+	IncidentIoConfiguration   IncidentIoConfiguration   `json:"incidentio_configuration"`
+	TableauConfiguration      TableauConfiguration      `json:"tableau_configuration"`
+	HubspotConfiguration      HubspotConfiguration      `json:"hubspot_configuration"`
+	GoogleSheetsConfiguration GoogleSheetsConfiguration `json:"google_sheets_configuration"`
+	Severity                  string                    `json:"severity"`
+	AttachedFileName          string                    `json:"attached_file_name"`
+	IsConfirmed               bool                      `json:"is_confirmed"`
 }
 
 type SlackConfiguration struct {
@@ -75,4 +77,12 @@ type HubspotConfiguration struct {
 	PipelineCode      string `json:"pipeline_code"`
 	PipelineStageCode string `json:"pipeline_stage_code"`
 	OwnerCode         string `json:"owner_code"`
+}
+
+type GoogleSheetsConfiguration struct {
+	DataKey       []byte `json:"data_key"`
+	Credentials   []byte `json:"credentials"`
+	Mode          string `json:"mode"`
+	SpreadsheetId string `json:"spreadsheet_id"`
+	SheetId       string `json:"sheet_id"`
 }
