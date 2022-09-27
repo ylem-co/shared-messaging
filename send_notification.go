@@ -22,6 +22,9 @@ const (
 	ErrorSendNotificationTaskDestinationOffline = 10101
 	ErrorSendNotificationTaskUnconfirmedEmail   = 10102
 	ErrorSendNotificationTaskUnconfirmedSms     = 10103
+
+	GoogleSheetsModeOverwrite = "overwrite"
+	GoogleSheetsModeAppend    = "append"
 )
 
 type SendNotificationTask struct {
