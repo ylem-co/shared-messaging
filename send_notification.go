@@ -88,4 +88,5 @@ type GoogleSheetsConfiguration struct {
 	Mode          string `json:"mode"`
 	SpreadsheetId string `json:"spreadsheet_id"`
 	SheetId       int64  `json:"sheet_id"`
+	WriteHeader   bool   `json:"write_header"`
 }
