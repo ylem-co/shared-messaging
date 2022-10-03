@@ -26,6 +26,7 @@ const (
 	TaskTypeApiCall      = "api_call"
 	TaskTypeForEach      = "for_each"
 	TaskTypeMerge        = "merge"
+	TaskTypeFilter       = "filter"
 
 	// The codes here should be up to 9999. This is general error codes space
 	ErrorMessageDeserialization = 100
@@ -122,6 +123,9 @@ func newMsg(messageName string) interface{} {
 	case TaskMergeMessageName:
 		return &MergeTask{}
 
+	case TaskFilterMessageName:
+		return &FilterTask{}
+
 	case TaskRunResultMessageName:
 		return &TaskRunResult{}
 
@@ -166,6 +170,9 @@ func getMessageName(msg interface{}) string {
 
 	case *MergeTask:
 		return TaskMergeMessageName
+
+	case *FilterTask:
+		return TaskFilterMessageName
 
 	case *TaskRunResult:
 		return TaskRunResultMessageName
