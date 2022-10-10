@@ -5,6 +5,7 @@ const (
 
 	ApiTypeGeneric    = "generic"
 	ApiTypeSalesforce = "salesforce"
+	ApiTypePagerDuty  = "pager_duty"
 
 	ApiAuthTypeBasic  = "Basic"
 	ApiAuthTypeBearer = "Bearer"
@@ -39,10 +40,17 @@ type ApiDestination struct {
 	AuthHeaderName        string                   `json:"auth_header_name"`
 	AuthHeaderValue       string                   `json:"auth_header_value"`
 	Salesforce            SalesforceApiDestination `json:"salesforce"`
+	PagerDuty             PagerDutyApiDestination  `json:"pager_duty"`
 }
 
 type SalesforceApiDestination struct {
 	OrgSubdomain     string `json:"org_subdomain"`
 	ObjectType       string `json:"object_type"`
 	CustomObjectName string `json:"custom_object_name"`
+}
+
+type PagerDutyApiDestination struct {
+	AssigneeIds        []string `json:"assignee_ids"`
+	ServiceId          string   `json:"service_id"`
+	EscalationPolicyId string   `json:"escalation_policy_id"`
 }
