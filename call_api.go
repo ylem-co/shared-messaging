@@ -50,6 +50,7 @@ type SalesforceApiDestination struct {
 }
 
 type PagerDutyApiDestination struct {
+	From               string   `json:"from"`
 	AssigneeIds        []string `json:"assignee_ids"`
 	ServiceId          string   `json:"service_id"`
 	EscalationPolicyId string   `json:"escalation_policy_id"`
