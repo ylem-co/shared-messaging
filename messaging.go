@@ -27,6 +27,7 @@ const (
 	TaskTypeForEach      = "for_each"
 	TaskTypeMerge        = "merge"
 	TaskTypeFilter       = "filter"
+	TaskTypeRunWorkflow  = "run_workflow"
 
 	// The codes here should be up to 9999. This is general error codes space
 	ErrorMessageDeserialization = 100
@@ -226,6 +227,7 @@ type Task struct {
 type Meta struct {
 	SqlQueryColumnOrder []string
 	InputCount          int64 // number of inputs in "merge" block
+	EnvVars             map[string]interface{}
 }
 
 type TaskRunError struct {
