@@ -37,6 +37,7 @@ type SendNotificationTask struct {
 	IncidentIoConfiguration   IncidentIoConfiguration   `json:"incidentio_configuration"`
 	TableauConfiguration      TableauConfiguration      `json:"tableau_configuration"`
 	HubspotConfiguration      HubspotConfiguration      `json:"hubspot_configuration"`
+	SalesforceConfiguration   SalesforceConfiguration   `json:"salesforce_configuration"`
 	GoogleSheetsConfiguration GoogleSheetsConfiguration `json:"google_sheets_configuration"`
 	Severity                  string                    `json:"severity"`
 	AttachedFileName          string                    `json:"attached_file_name"`
@@ -80,6 +81,12 @@ type HubspotConfiguration struct {
 	PipelineCode      string `json:"pipeline_code"`
 	PipelineStageCode string `json:"pipeline_stage_code"`
 	OwnerCode         string `json:"owner_code"`
+}
+
+type SalesforceConfiguration struct {
+	DataKey     []byte `json:"data_key"`
+	AccessToken []byte `json:"access_token"`
+	Domain      string `json:"domain"`
 }
 
 type GoogleSheetsConfiguration struct {

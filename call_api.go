@@ -4,7 +4,6 @@ const (
 	TaskCallApiMessageName = "tasks.call_api"
 
 	ApiTypeGeneric    = "generic"
-	ApiTypeSalesforce = "salesforce"
 	ApiTypePagerDuty  = "pager_duty"
 
 	ApiAuthTypeBasic  = "Basic"
@@ -13,9 +12,6 @@ const (
 
 	ErrorCallApiTaskFailure            = 10200
 	ErrorCallApiTaskDestinationOffline = 10201
-
-	SalesforceObjectTypeCase   = "case"
-	SalesforceObjectTypeCustom = "custom"
 )
 
 type CallApiTask struct {
@@ -39,14 +35,7 @@ type ApiDestination struct {
 	AuthBasicUserPassword string                   `json:"auth_basic_user_password"`
 	AuthHeaderName        string                   `json:"auth_header_name"`
 	AuthHeaderValue       string                   `json:"auth_header_value"`
-	Salesforce            SalesforceApiDestination `json:"salesforce"`
 	PagerDuty             PagerDutyApiDestination  `json:"pager_duty"`
-}
-
-type SalesforceApiDestination struct {
-	OrgSubdomain     string `json:"org_subdomain"`
-	ObjectType       string `json:"object_type"`
-	CustomObjectName string `json:"custom_object_name"`
 }
 
 type PagerDutyApiDestination struct {
