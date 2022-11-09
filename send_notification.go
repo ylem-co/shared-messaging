@@ -16,6 +16,7 @@ const (
 	NotificationTypeIncidentIo   = "incidentio"
 	NotificationTypeTableau      = "tableau"
 	NotificationTypeHubspot      = "hubspot"
+	NotificationTypeSalesforce   = "salesforce"
 	NotificationTypeGoogleSheets = "google-sheets"
 
 	ErrorSendNotificationTaskFailure            = 10100
