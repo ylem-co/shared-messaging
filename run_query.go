@@ -19,6 +19,7 @@ const (
 	SourceTypePlanetScale       = "planet-scale"
 	SourceTypeImmuta            = "immuta"
 	SourceTypeElasticsearch     = "elasticsearch"
+	SourceTypeRedshift          = "redshift"
 
 	SourceConnectionTypeDirect = "direct"
 	SourceConnectionTypeSsh    = "ssh"
