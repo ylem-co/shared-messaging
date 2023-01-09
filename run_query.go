@@ -20,6 +20,7 @@ const (
 	SourceTypeImmuta            = "immuta"
 	SourceTypeElasticsearch     = "elasticsearch"
 	SourceTypeRedshift          = "redshift"
+	SourceTypeClickhouse        = "clickhouse"
 
 	SourceConnectionTypeDirect = "direct"
 	SourceConnectionTypeSsh    = "ssh"
