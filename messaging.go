@@ -34,6 +34,9 @@ const (
 	ErrorInternal               = 101
 	ErrorBadRequest             = 200
 	ErrorUnknownTaskType        = 9999
+
+	IdListTypeEnabled  = "enabled"
+	IdListTypeDisabled = "disabled"
 )
 
 type Envelope struct {
@@ -228,6 +231,17 @@ type Meta struct {
 	SqlQueryColumnOrder []string
 	InputCount          int64 // number of inputs in "merge" block
 	EnvVars             map[string]interface{}
+	WorkflowRunConfig   WorkflowRunConfig
+}
+
+type WorkflowRunConfig struct {
+	TaskIds        IdList `json:"task_ids"`
+	TaskTriggerIds IdList `json:"task_trigger_ids"`
+}
+
+type IdList struct {
+	Type string   `json:"type"`
+	Ids  []string `json:"ids"`
 }
 
 type TaskRunError struct {
