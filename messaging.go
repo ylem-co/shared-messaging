@@ -18,16 +18,17 @@ const (
 	DateTimeFormat    = "2006-01-02 15:04:05"
 
 	// Task types
-	TaskTypeQuery        = "query"
-	TaskTypeCondition    = "condition"
-	TaskTypeAggregator   = "aggregator"
-	TaskTypeTransformer  = "transformer"
-	TaskTypeNotification = "notification"
-	TaskTypeApiCall      = "api_call"
-	TaskTypeForEach      = "for_each"
-	TaskTypeMerge        = "merge"
-	TaskTypeFilter       = "filter"
-	TaskTypeRunWorkflow  = "run_workflow"
+	TaskTypeQuery           = "query"
+	TaskTypeCondition       = "condition"
+	TaskTypeAggregator      = "aggregator"
+	TaskTypeTransformer     = "transformer"
+	TaskTypeNotification    = "notification"
+	TaskTypeApiCall         = "api_call"
+	TaskTypeForEach         = "for_each"
+	TaskTypeMerge           = "merge"
+	TaskTypeFilter          = "filter"
+	TaskTypeRunWorkflow     = "run_workflow"
+	TaskTypeExternalTrigger = "external_trigger"
 
 	// The codes here should be up to 9999. This is general error codes space
 	ErrorMessageDeserialization = 100
@@ -144,6 +145,9 @@ func newMsg(messageName string) interface{} {
 
 	case sources.SourceStatusToggledMessageName:
 		return &sources.SourceStatusToggled{}
+
+	case TaskExternalTriggerMessageName:
+		return &ExternalTriggerTask{}
 	}
 
 	return nil
@@ -180,6 +184,9 @@ func getMessageName(msg interface{}) string {
 
 	case *TaskRunResult:
 		return TaskRunResultMessageName
+
+	case *ExternalTriggerTask:
+		return TaskExternalTriggerMessageName
 
 	case *customers.CustomerRegistered,
 		*customers.CustomerPasswordRecoveryRequested,
