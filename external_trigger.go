@@ -8,5 +8,5 @@ const (
 
 type ExternalTriggerTask struct {
 	Task
-	Input string `json:"input"`
+	Input []byte `json:"input"`
 }
