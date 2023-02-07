@@ -30,6 +30,10 @@ const (
 	TaskTypeRunWorkflow     = "run_workflow"
 	TaskTypeExternalTrigger = "external_trigger"
 
+	// Workflow types
+	WorkflowTypeGeneric = "generic"
+	WorkflowTypeMetric  = "metric"
+
 	// The codes here should be up to 9999. This is general error codes space
 	ErrorMessageDeserialization = 100
 	ErrorInternal               = 101
@@ -221,6 +225,7 @@ const (
 )
 
 type Task struct {
+	WorkflowType     string    `json:"workflow_type"`
 	WorkflowRunUuid  uuid.UUID `json:"workflow_run_uuid"`
 	TaskRunUuid      uuid.UUID `json:"task_run_uuid"`
 	TaskUuid         uuid.UUID `json:"task_uuid"`
@@ -258,6 +263,7 @@ type TaskRunError struct {
 }
 
 type TaskRunResult struct {
+	WorkflowType     string         `json:"workflow_type"`
 	WorkflowRunUuid  uuid.UUID      `json:"workflow_run_uuid"`
 	TaskRunUuid      uuid.UUID      `json:"task_run_uuid"`
 	IsSuccessful     bool           `json:"is_successful"`

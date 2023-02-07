@@ -3,8 +3,8 @@ package messaging
 const (
 	TaskCallApiMessageName = "tasks.call_api"
 
-	ApiTypeGeneric    = "generic"
-	ApiTypePagerDuty  = "pager_duty"
+	ApiTypeGeneric   = "generic"
+	ApiTypePagerDuty = "pager_duty"
 
 	ApiAuthTypeBasic  = "Basic"
 	ApiAuthTypeBearer = "Bearer"
@@ -27,15 +27,15 @@ type CallApiTask struct {
 
 type ApiDestination struct {
 	Destination
-	Type                  string                   `json:"type"`
-	Method                string                   `json:"method"`
-	AuthType              string                   `json:"auth_type"`
-	AuthBearerToken       string                   `json:"auth_bearer_token"`
-	AuthBasicUserName     string                   `json:"auth_basic_user_name"`
-	AuthBasicUserPassword string                   `json:"auth_basic_user_password"`
-	AuthHeaderName        string                   `json:"auth_header_name"`
-	AuthHeaderValue       string                   `json:"auth_header_value"`
-	PagerDuty             PagerDutyApiDestination  `json:"pager_duty"`
+	Type                  string                  `json:"type"`
+	Method                string                  `json:"method"`
+	AuthType              string                  `json:"auth_type"`
+	AuthBearerToken       string                  `json:"auth_bearer_token"`
+	AuthBasicUserName     string                  `json:"auth_basic_user_name"`
+	AuthBasicUserPassword string                  `json:"auth_basic_user_password"`
+	AuthHeaderName        string                  `json:"auth_header_name"`
+	AuthHeaderValue       string                  `json:"auth_header_value"`
+	PagerDuty             PagerDutyApiDestination `json:"pager_duty"`
 }
 
 type PagerDutyApiDestination struct {
