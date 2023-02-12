@@ -152,6 +152,9 @@ func newMsg(messageName string) interface{} {
 
 	case TaskExternalTriggerMessageName:
 		return &ExternalTriggerTask{}
+
+	case TaskExecutePythonMessageName:
+		return &ExecutePythonTask{}
 	}
 
 	return nil
@@ -191,6 +194,9 @@ func getMessageName(msg interface{}) string {
 
 	case *ExternalTriggerTask:
 		return TaskExternalTriggerMessageName
+
+	case *ExecutePythonTask:
+		return TaskExecutePythonMessageName
 
 	case *customers.CustomerRegistered,
 		*customers.CustomerPasswordRecoveryRequested,
