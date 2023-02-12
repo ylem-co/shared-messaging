@@ -29,6 +29,7 @@ const (
 	TaskTypeFilter          = "filter"
 	TaskTypeRunWorkflow     = "run_workflow"
 	TaskTypeExternalTrigger = "external_trigger"
+	TaskTypePython          = "python"
 
 	// Workflow types
 	WorkflowTypeGeneric = "generic"
