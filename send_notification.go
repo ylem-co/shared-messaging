@@ -14,6 +14,7 @@ const (
 	NotificationTypeSlack        = "slack"
 	NotificationTypeJira         = "jira"
 	NotificationTypeIncidentIo   = "incidentio"
+	NotificationTypeOpsgenie     = "opsgenie"
 	NotificationTypeTableau      = "tableau"
 	NotificationTypeHubspot      = "hubspot"
 	NotificationTypeSalesforce   = "salesforce"
@@ -36,6 +37,7 @@ type SendNotificationTask struct {
 	SlackConfiguration        SlackConfiguration        `json:"slack_configuration"`
 	JiraConfiguration         JiraConfiguration         `json:"jira_configuration"`
 	IncidentIoConfiguration   IncidentIoConfiguration   `json:"incidentio_configuration"`
+	OpsgenieConfiguration     OpsgenieConfiguration     `json:"opsgenie_configuration"`
 	TableauConfiguration      TableauConfiguration      `json:"tableau_configuration"`
 	HubspotConfiguration      HubspotConfiguration      `json:"hubspot_configuration"`
 	SalesforceConfiguration   SalesforceConfiguration   `json:"salesforce_configuration"`
@@ -63,6 +65,11 @@ type IncidentIoConfiguration struct {
 	DataKey    []byte `json:"data_key"`
 	Mode       string `json:"mode"`
 	Visibility string `json:"visibility"`
+}
+
+type OpsgenieConfiguration struct {
+	ApiKey     []byte `json:"api_key"`
+	DataKey    []byte `json:"data_key"`
 }
 
 type TableauConfiguration struct {
