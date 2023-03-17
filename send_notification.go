@@ -19,6 +19,7 @@ const (
 	NotificationTypeHubspot      = "hubspot"
 	NotificationTypeSalesforce   = "salesforce"
 	NotificationTypeGoogleSheets = "google-sheets"
+	NotificationTypeJenkins      = "jenkins"
 
 	ErrorSendNotificationTaskFailure            = 10100
 	ErrorSendNotificationTaskDestinationOffline = 10101
@@ -42,6 +43,7 @@ type SendNotificationTask struct {
 	HubspotConfiguration      HubspotConfiguration      `json:"hubspot_configuration"`
 	SalesforceConfiguration   SalesforceConfiguration   `json:"salesforce_configuration"`
 	GoogleSheetsConfiguration GoogleSheetsConfiguration `json:"google_sheets_configuration"`
+	JenkinsConfiguration      JenkinsConfiguration      `json:"jenkins_configuration"`
 	Severity                  string                    `json:"severity"`
 	AttachedFileName          string                    `json:"attached_file_name"`
 	IsConfirmed               bool                      `json:"is_confirmed"`
@@ -68,8 +70,8 @@ type IncidentIoConfiguration struct {
 }
 
 type OpsgenieConfiguration struct {
-	ApiKey     []byte `json:"api_key"`
-	DataKey    []byte `json:"data_key"`
+	ApiKey  []byte `json:"api_key"`
+	DataKey []byte `json:"data_key"`
 }
 
 type TableauConfiguration struct {
@@ -104,4 +106,10 @@ type GoogleSheetsConfiguration struct {
 	SpreadsheetId string `json:"spreadsheet_id"`
 	SheetId       int64  `json:"sheet_id"`
 	WriteHeader   bool   `json:"write_header"`
+}
+
+type JenkinsConfiguration struct {
+	BaseUrl string `json:"base_url"`
+	Token   []byte `json:"token"`
+	DataKey []byte `json:"data_key"`
 }
