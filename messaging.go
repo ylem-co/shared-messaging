@@ -156,6 +156,9 @@ func newMsg(messageName string) interface{} {
 
 	case TaskExecutePythonMessageName:
 		return &ExecutePythonTask{}
+
+	case TaskCallOpenapiGptMessageName:
+		return &CallOpenapiGptTask{}
 	}
 
 	return nil
@@ -198,6 +201,9 @@ func getMessageName(msg interface{}) string {
 
 	case *ExecutePythonTask:
 		return TaskExecutePythonMessageName
+
+	case *CallOpenapiGptTask:
+		return TaskCallOpenapiGptMessageName
 
 	case *customers.CustomerRegistered,
 		*customers.CustomerPasswordRecoveryRequested,
