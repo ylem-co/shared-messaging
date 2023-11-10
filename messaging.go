@@ -29,7 +29,8 @@ const (
 	TaskTypeFilter          = "filter"
 	TaskTypeRunWorkflow     = "run_workflow"
 	TaskTypeExternalTrigger = "external_trigger"
-	TaskTypePython          = "python"
+	TaskTypeCode            = "code"
+	TaskTypeOpenapiGpt      = "gpt"
 
 	// Workflow types
 	WorkflowTypeGeneric = "generic"
@@ -154,8 +155,8 @@ func newMsg(messageName string) interface{} {
 	case TaskExternalTriggerMessageName:
 		return &ExternalTriggerTask{}
 
-	case TaskExecutePythonMessageName:
-		return &ExecutePythonTask{}
+	case TaskExecuteCodeMessageName:
+		return &ExecuteCodeTask{}
 
 	case TaskCallOpenapiGptMessageName:
 		return &CallOpenapiGptTask{}
@@ -199,8 +200,8 @@ func getMessageName(msg interface{}) string {
 	case *ExternalTriggerTask:
 		return TaskExternalTriggerMessageName
 
-	case *ExecutePythonTask:
-		return TaskExecutePythonMessageName
+	case *ExecuteCodeTask:
+		return TaskExecuteCodeMessageName
 
 	case *CallOpenapiGptTask:
 		return TaskCallOpenapiGptMessageName
