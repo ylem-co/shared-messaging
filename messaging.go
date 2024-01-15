@@ -253,6 +253,19 @@ type Task struct {
 	Meta             Meta      `json:"meta"`
 }
 
+type TaskInterface interface {
+	GetWorkflowUuid() uuid.UUID
+	GetWorkflowRunUuid() uuid.UUID
+}
+
+func (t *Task) GetWorkflowUuid() uuid.UUID {
+	return t.WorkflowUuid
+}
+
+func (t *Task) GetWorkflowRunUuid() uuid.UUID {
+	return t.WorkflowRunUuid
+}
+
 type Meta struct {
 	SqlQueryColumnOrder []string
 	InputCount          int64 // number of inputs in "merge" block
