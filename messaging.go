@@ -31,6 +31,7 @@ const (
 	TaskTypeExternalTrigger = "external_trigger"
 	TaskTypeCode            = "code"
 	TaskTypeOpenapiGpt      = "gpt"
+	TaskTypeProcessor       = "processor"
 
 	// Workflow types
 	WorkflowTypeGeneric = "generic"
@@ -160,6 +161,9 @@ func newMsg(messageName string) interface{} {
 
 	case TaskCallOpenapiGptMessageName:
 		return &CallOpenapiGptTask{}
+
+	case TaskProcessDataMessageName:
+		return &ProcessDataTask{}
 	}
 
 	return nil
@@ -205,6 +209,9 @@ func getMessageName(msg interface{}) string {
 
 	case *CallOpenapiGptTask:
 		return TaskCallOpenapiGptMessageName
+
+	case *ProcessDataTask:
+		return TaskProcessDataMessageName
 
 	case *customers.CustomerRegistered,
 		*customers.CustomerPasswordRecoveryRequested,
