@@ -22,7 +22,7 @@ const (
 	NotificationTypeJenkins      = "jenkins"
 
 	ErrorSendNotificationTaskFailure            = 10100
-	ErrorSendNotificationTaskDestinationOffline = 10101
+	ErrorSendNotificationTaskIntegrationOffline = 10101
 	ErrorSendNotificationTaskUnconfirmedEmail   = 10102
 	ErrorSendNotificationTaskUnconfirmedSms     = 10103
 
@@ -34,7 +34,7 @@ type SendNotificationTask struct {
 	Task
 	Type                      string                    `json:"type"`
 	Body                      string                    `json:"body"`
-	Destination               Destination               `json:"destination"`
+	Integration               Integration               `json:"integration"`
 	SlackConfiguration        SlackConfiguration        `json:"slack_configuration"`
 	JiraConfiguration         JiraConfiguration         `json:"jira_configuration"`
 	IncidentIoConfiguration   IncidentIoConfiguration   `json:"incidentio_configuration"`

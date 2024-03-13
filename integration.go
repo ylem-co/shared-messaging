@@ -2,7 +2,7 @@ package messaging
 
 import "github.com/google/uuid"
 
-type Destination struct {
+type Integration struct {
 	Uuid             uuid.UUID `json:"uuid"`
 	CreatorUuid      uuid.UUID `json:"-"`
 	OrganizationUuid uuid.UUID `json:"-"`

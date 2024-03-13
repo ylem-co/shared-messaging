@@ -11,7 +11,7 @@ const (
 	ApiAuthTypeHeader = "Header"
 
 	ErrorCallApiTaskFailure            = 10200
-	ErrorCallApiTaskDestinationOffline = 10201
+	ErrorCallApiTaskIntegrationOffline = 10201
 )
 
 type CallApiTask struct {
@@ -22,11 +22,11 @@ type CallApiTask struct {
 	Headers          map[string]string `json:"headers"`
 	Severity         string            `json:"severity"`
 	AttachedFileName string            `json:"attached_file_name"`
-	Destination      ApiDestination    `json:"destination"`
+	Integration      ApiIntegration    `json:"integration"`
 }
 
-type ApiDestination struct {
-	Destination
+type ApiIntegration struct {
+	Integration
 	Type                  string                  `json:"type"`
 	Method                string                  `json:"method"`
 	AuthType              string                  `json:"auth_type"`
@@ -35,10 +35,10 @@ type ApiDestination struct {
 	AuthBasicUserPassword string                  `json:"auth_basic_user_password"`
 	AuthHeaderName        string                  `json:"auth_header_name"`
 	AuthHeaderValue       string                  `json:"auth_header_value"`
-	PagerDuty             PagerDutyApiDestination `json:"pager_duty"`
+	PagerDuty             PagerDutyApiIntegration `json:"pager_duty"`
 }
 
-type PagerDutyApiDestination struct {
+type PagerDutyApiIntegration struct {
 	From               string   `json:"from"`
 	AssigneeIds        []string `json:"assignee_ids"`
 	ServiceId          string   `json:"service_id"`
