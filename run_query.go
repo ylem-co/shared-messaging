@@ -31,11 +31,11 @@ const (
 
 type RunQueryTask struct {
 	Task
-	Source Source `json:"source"`
+	Source SQLIntegration `json:"source"`
 	Query  string `json:"query"`
 }
 
-type Source struct {
+type SQLIntegration struct {
 	Uuid             uuid.UUID `json:"uuid"`
 	CreatorUuid      uuid.UUID `json:"creator_uuid"`
 	OrganizationUuid uuid.UUID `json:"organization_uuid"`
