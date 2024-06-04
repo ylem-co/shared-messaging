@@ -1,4 +1,4 @@
-module github.com/datamin-io/messaging
+module github.com/datamin-io/shared-messaging
 
 go 1.17
 
