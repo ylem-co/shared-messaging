@@ -27,15 +27,15 @@ const (
 	TaskTypeForEach         = "for_each"
 	TaskTypeMerge           = "merge"
 	TaskTypeFilter          = "filter"
-	TaskTypeRunWorkflow     = "run_workflow"
+	TaskTypeRunPipeline     = "run_pipeline"
 	TaskTypeExternalTrigger = "external_trigger"
 	TaskTypeCode            = "code"
 	TaskTypeOpenapiGpt      = "gpt"
 	TaskTypeProcessor       = "processor"
 
-	// Workflow types
-	WorkflowTypeGeneric = "generic"
-	WorkflowTypeMetric  = "metric"
+	// Pipeline types
+	PipelineTypeGeneric = "generic"
+	PipelineTypeMetric  = "metric"
 
 	// The codes here should be up to 9999. This is general error codes space
 	ErrorMessageDeserialization = 100
@@ -246,11 +246,11 @@ const (
 )
 
 type Task struct {
-	WorkflowType     string    `json:"workflow_type"`
-	WorkflowRunUuid  uuid.UUID `json:"workflow_run_uuid"`
+	PipelineType     string    `json:"pipeline_type"`
+	PipelineRunUuid  uuid.UUID `json:"pipeline_run_uuid"`
 	TaskRunUuid      uuid.UUID `json:"task_run_uuid"`
 	TaskUuid         uuid.UUID `json:"task_uuid"`
-	WorkflowUuid     uuid.UUID `json:"workflow_uuid"`
+	PipelineUuid     uuid.UUID `json:"pipeline_uuid"`
 	OrganizationUuid uuid.UUID `json:"organization_uuid"`
 	CreatorUuid      uuid.UUID `json:"creator_uuid"`
 	TaskName         string    `json:"task_name"`
@@ -261,26 +261,26 @@ type Task struct {
 }
 
 type TaskInterface interface {
-	GetWorkflowUuid() uuid.UUID
-	GetWorkflowRunUuid() uuid.UUID
+	GetPipelineUuid() uuid.UUID
+	GetPipelineRunUuid() uuid.UUID
 }
 
-func (t *Task) GetWorkflowUuid() uuid.UUID {
-	return t.WorkflowUuid
+func (t *Task) GetPipelineUuid() uuid.UUID {
+	return t.PipelineUuid
 }
 
-func (t *Task) GetWorkflowRunUuid() uuid.UUID {
-	return t.WorkflowRunUuid
+func (t *Task) GetPipelineRunUuid() uuid.UUID {
+	return t.PipelineRunUuid
 }
 
 type Meta struct {
 	SqlQueryColumnOrder []string
 	InputCount          int64 // number of inputs in "merge" block
 	EnvVars             map[string]interface{}
-	WorkflowRunConfig   WorkflowRunConfig
+	PipelineRunConfig   PipelineRunConfig
 }
 
-type WorkflowRunConfig struct {
+type PipelineRunConfig struct {
 	TaskIds        IdList `json:"task_ids"`
 	TaskTriggerIds IdList `json:"task_trigger_ids"`
 }
@@ -297,15 +297,15 @@ type TaskRunError struct {
 }
 
 type TaskRunResult struct {
-	WorkflowType     string         `json:"workflow_type"`
-	WorkflowRunUuid  uuid.UUID      `json:"workflow_run_uuid"`
+	PipelineType     string         `json:"pipeline_type"`
+	PipelineRunUuid  uuid.UUID      `json:"pipeline_run_uuid"`
 	TaskRunUuid      uuid.UUID      `json:"task_run_uuid"`
 	IsSuccessful     bool           `json:"is_successful"`
 	Errors           []TaskRunError `json:"errors"`
 	Uuid             uuid.UUID      `json:"uuid"`
 	TaskUuid         uuid.UUID      `json:"task_uuid"`
 	TaskType         string         `json:"task_type"`
-	WorkflowUuid     uuid.UUID      `json:"workflow_uuid"`
+	PipelineUuid     uuid.UUID      `json:"pipeline_uuid"`
 	OrganizationUuid uuid.UUID      `json:"organization_uuid"`
 	CreatorUuid      uuid.UUID      `json:"creator_uuid"`
 	IsInitialTask    bool           `json:"is_initial_task"`
