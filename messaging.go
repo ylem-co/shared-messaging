@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/datamin-io/messaging/customers"
-	"github.com/datamin-io/messaging/macaw"
-	"github.com/datamin-io/messaging/sources"
+	"github.com/datamin-io/shared-messaging/customers"
+	"github.com/datamin-io/shared-messaging/macaw"
+	"github.com/datamin-io/shared-messaging/sources"
 
 	"github.com/google/uuid"
 	log "github.com/sirupsen/logrus"
