@@ -1,6 +1,7 @@
-# Datamin messages
+# Ylem messages
+
 ## Module contents
-The module contains messages exchanged within the whole Datamin system and methods for marshaling/unmarshaling.
+The module contains messages exchanged within the whole Ylem system and methods for marshaling/unmarshaling.
 
 ## Installation
 In order to include this module in your application, add the following to your .bashrc and .bash_profile:
@@ -18,22 +19,23 @@ Also, add the following to your ~/.gitconfig:
 Download the module:
 
 ```bash
-$ go get github.com/datamin-io/messaging@main
+$ go get github.com/datamin-io/shared-messaging@main
 ```
 
 Then import as usual:
 
 ```golang
-import "github.com/datamin-io/messaging"
+import "github.com/datamin-io/shared-messaging"
 ```
 
 
 ## Usage
+
 ### On the sending end
 ```golang
 package main
 
-import "github.com/datamin-io/messaging"
+import "github.com/datamin-io/shared-messaging"
 
 // create an actual message, e.g.
 msg := &messaging.RunQueryTask{
@@ -63,7 +65,7 @@ package main
 import (
     "fmt"
 
-    "github.com/datamin-io/messaging"
+    "github.com/datamin-io/shared-messaging"
 )
 
 // receive a serialized message from the transport
@@ -98,7 +100,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/datamin-io/messaging"
+	"github.com/datamin-io/shared-messaging"
 	"github.com/lovoo/goka"
 )
 
