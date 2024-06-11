@@ -4,17 +4,6 @@
 The module contains messages exchanged within the whole Ylem system and methods for marshaling/unmarshaling.
 
 ## Installation
-In order to include this module in your application, add the following to your .bashrc and .bash_profile:
-
-```bash
-export GOPRIVATE=github.com/datamin-io
-```
-
-Also, add the following to your ~/.gitconfig:
-```bash
-[url "git@github.com:"]
-        insteadOf = https://github.com/
-```
 
 Download the module:
 
@@ -27,7 +16,6 @@ Then import as usual:
 ```golang
 import "github.com/datamin-io/shared-messaging"
 ```
-
 
 ## Usage
 
@@ -84,7 +72,6 @@ switch envelope.Headers[messaging.HEADER_MESSAGE_NAME] {
 }
 
 ```
-
 
 ### Using together with lovoo/goka
 https://github.com/lovoo/goka
