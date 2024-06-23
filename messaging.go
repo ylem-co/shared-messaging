@@ -15,7 +15,7 @@ import (
 
 const (
 	HeaderMessageName = "X-Message-Name"
-	DateTimeFormat    = "2006-01-02 15:04:05"
+	DateTimeFormat    = "2006-01-02 15:04:05.123456"
 
 	// Task types
 	TaskTypeQuery           = "query"
