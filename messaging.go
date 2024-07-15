@@ -111,59 +111,62 @@ func NewEnvelope(msg interface{}) *Envelope {
 
 func newMsg(messageName string) interface{} {
 	switch messageName {
-	case TaskRunQueryMessageName:
-		return &RunQueryTask{}
+		case TaskRunQueryMessageName:
+			return &RunQueryTask{}
 
-	case TaskRunForEachMessageName:
-		return &RunForEachTask{}
+		case TaskRunForEachMessageName:
+			return &RunForEachTask{}
 
-	case TaskCheckConditionMessageName:
-		return &CheckConditionTask{}
+		case TaskCheckConditionMessageName:
+			return &CheckConditionTask{}
 
-	case TaskAggregateDataMessageName:
-		return &AggregateDataTask{}
+		case TaskAggregateDataMessageName:
+			return &AggregateDataTask{}
 
-	case TaskTransformDataMessageName:
-		return &TransformDataTask{}
+		case TaskTransformDataMessageName:
+			return &TransformDataTask{}
 
-	case TaskCallApiMessageName:
-		return &CallApiTask{}
+		case TaskCallApiMessageName:
+			return &CallApiTask{}
 
-	case TaskSendNotificationMessageName:
-		return &SendNotificationTask{}
+		case TaskSendNotificationMessageName:
+			return &SendNotificationTask{}
 
-	case TaskMergeMessageName:
-		return &MergeTask{}
+		case TaskMergeMessageName:
+			return &MergeTask{}
 
-	case TaskFilterMessageName:
-		return &FilterTask{}
+		case TaskFilterMessageName:
+			return &FilterTask{}
 
-	case TaskRunResultMessageName:
-		return &TaskRunResult{}
+		case TaskRunResultMessageName:
+			return &TaskRunResult{}
 
-	case customers.CustomerPasswordRecoveryRequestedMessageName:
-		return &customers.CustomerPasswordRecoveryRequested{}
+		case customers.CustomerPasswordRecoveryRequestedMessageName:
+			return &customers.CustomerPasswordRecoveryRequested{}
 
-	case customers.CustomerRegisteredMessageName:
-		return &customers.CustomerRegistered{}
+		case customers.CustomerRegisteredMessageName:
+			return &customers.CustomerRegistered{}
 
-	case customers.CustomerSendInviteMessageName:
-		return &customers.CustomerSendInvite{}
+		case customers.CustomerSendInviteMessageName:
+			return &customers.CustomerSendInvite{}
 
-	case sources.SourceStatusToggledMessageName:
-		return &sources.SourceStatusToggled{}
+		case sources.SourceStatusToggledMessageName:
+			return &sources.SourceStatusToggled{}
 
-	case TaskExternalTriggerMessageName:
-		return &ExternalTriggerTask{}
+		case TaskExternalTriggerMessageName:
+			return &ExternalTriggerTask{}
 
-	case TaskExecuteCodeMessageName:
-		return &ExecuteCodeTask{}
+		case TaskExecuteCodeMessageName:
+			return &ExecuteCodeTask{}
 
-	case TaskCallOpenapiGptMessageName:
-		return &CallOpenapiGptTask{}
+		case TaskCallOpenapiGptMessageName:
+			return &CallOpenapiGptTask{}
 
-	case TaskProcessDataMessageName:
-		return &ProcessDataTask{}
+		case TaskProcessDataMessageName:
+			return &ProcessDataTask{}
+
+		case TaskRunPipelineMessageName:
+			return &RunPipelineTask{}
 	}
 
 	return nil
@@ -171,56 +174,59 @@ func newMsg(messageName string) interface{} {
 
 func getMessageName(msg interface{}) string {
 	switch in := msg.(type) {
-	case *RunQueryTask:
-		return TaskRunQueryMessageName
+		case *RunQueryTask:
+			return TaskRunQueryMessageName
 
-	case *RunForEachTask:
-		return TaskRunForEachMessageName
+		case *RunForEachTask:
+			return TaskRunForEachMessageName
 
-	case *CheckConditionTask:
-		return TaskCheckConditionMessageName
+		case *CheckConditionTask:
+			return TaskCheckConditionMessageName
 
-	case *AggregateDataTask:
-		return TaskAggregateDataMessageName
+		case *AggregateDataTask:
+			return TaskAggregateDataMessageName
 
-	case *TransformDataTask:
-		return TaskTransformDataMessageName
+		case *TransformDataTask:
+			return TaskTransformDataMessageName
 
-	case *SendNotificationTask:
-		return TaskSendNotificationMessageName
+		case *SendNotificationTask:
+			return TaskSendNotificationMessageName
 
-	case *CallApiTask:
-		return TaskCallApiMessageName
+		case *CallApiTask:
+			return TaskCallApiMessageName
 
-	case *MergeTask:
-		return TaskMergeMessageName
+		case *MergeTask:
+			return TaskMergeMessageName
 
-	case *FilterTask:
-		return TaskFilterMessageName
+		case *FilterTask:
+			return TaskFilterMessageName
 
-	case *TaskRunResult:
-		return TaskRunResultMessageName
+		case *TaskRunResult:
+			return TaskRunResultMessageName
 
-	case *ExternalTriggerTask:
-		return TaskExternalTriggerMessageName
+		case *ExternalTriggerTask:
+			return TaskExternalTriggerMessageName
 
-	case *ExecuteCodeTask:
-		return TaskExecuteCodeMessageName
+		case *ExecuteCodeTask:
+			return TaskExecuteCodeMessageName
 
-	case *CallOpenapiGptTask:
-		return TaskCallOpenapiGptMessageName
+		case *CallOpenapiGptTask:
+			return TaskCallOpenapiGptMessageName
 
-	case *ProcessDataTask:
-		return TaskProcessDataMessageName
+		case *ProcessDataTask:
+			return TaskProcessDataMessageName
 
-	case *customers.CustomerRegistered,
-		*customers.CustomerPasswordRecoveryRequested,
-		*customers.CustomerSendInvite,
-		*sources.SourceStatusToggled:
-		return in.(macaw.Message).GetMacawMessageKey()
+		case *RunPipelineTask:
+			return TaskRunPipelineMessageName
 
-	default:
-		return ""
+		case *customers.CustomerRegistered,
+			*customers.CustomerPasswordRecoveryRequested,
+			*customers.CustomerSendInvite,
+			*sources.SourceStatusToggled:
+			return in.(macaw.Message).GetMacawMessageKey()
+
+		default:
+			return ""
 	}
 }
 
