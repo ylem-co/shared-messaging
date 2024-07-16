@@ -8,5 +8,5 @@ const (
 
 type RunPipelineTask struct {
 	Task
-	PipelineToRunUuid   string `json:"pipeline_uuid"`
+	PipelineToRunUuid   string `json:"pipeline_to_run_uuid"`
 }
