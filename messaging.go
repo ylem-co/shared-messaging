@@ -269,6 +269,7 @@ type Task struct {
 type TaskInterface interface {
 	GetPipelineUuid() uuid.UUID
 	GetPipelineRunUuid() uuid.UUID
+	GetOrganizationUuid() uuid.UUID
 }
 
 func (t *Task) GetPipelineUuid() uuid.UUID {
@@ -277,6 +278,10 @@ func (t *Task) GetPipelineUuid() uuid.UUID {
 
 func (t *Task) GetPipelineRunUuid() uuid.UUID {
 	return t.PipelineRunUuid
+}
+
+func (t *Task) GetOrganizationUuid() uuid.UUID {
+	return t.OrganizationUuid
 }
 
 type Meta struct {
