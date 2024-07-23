@@ -1,5 +1,12 @@
 # Ylem messages
 
+<a href="https://github.com/datamin-io/ylem?tab=Apache-2.0-1-ov-file">![Static Badge](https://img.shields.io/badge/license-Apache%202.0-black)</a>
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/datamin-io/shared-messaging?color=black)
+![GitHub branch status](https://img.shields.io/github/checks-status/datamin-io/shared-messaging/main?color=black)
+<a href="https://datamin.io" target="_blank">![Static Badge](https://img.shields.io/badge/website-ylem.co-black)</a>
+<a href="https://docs.datamin.io" target="_blank">![Static Badge](https://img.shields.io/badge/documentation-docs.ylem.co-black)</a>
+<a href="https://join.slack.com/t/datamincommunity/shared_invite/zt-2nawzl6h0-qqJ0j7Vx_AEHfnB45xJg2Q" target="_blank">![Static Badge](https://img.shields.io/badge/community-join%20Slack-black)</a>
+
 ## Module contents
 The module contains messages exchanged within the whole Ylem system and methods for marshaling/unmarshaling.
 
