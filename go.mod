@@ -1,6 +1,6 @@
 module github.com/datamin-io/shared-messaging
 
-go 1.17
+go 1.21
 
 require (
 	github.com/google/uuid v1.3.0
