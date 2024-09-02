@@ -8,13 +8,13 @@ The module contains messages exchanged within the whole Ylem system and methods 
 Download the module:
 
 ```bash
-$ go get github.com/datamin-io/shared-messaging@main
+$ go get github.com/ylem-co/shared-messaging@main
 ```
 
 Then import as usual:
 
 ```golang
-import "github.com/datamin-io/shared-messaging"
+import "github.com/ylem-co/shared-messaging"
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ import "github.com/datamin-io/shared-messaging"
 ```golang
 package main
 
-import "github.com/datamin-io/shared-messaging"
+import "github.com/ylem-co/shared-messaging"
 
 // create an actual message, e.g.
 msg := &messaging.RunQueryTask{
@@ -53,7 +53,7 @@ package main
 import (
     "fmt"
 
-    "github.com/datamin-io/shared-messaging"
+    "github.com/ylem-co/shared-messaging"
 )
 
 // receive a serialized message from the transport
@@ -87,7 +87,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/datamin-io/shared-messaging"
+	"github.com/ylem-co/shared-messaging"
 	"github.com/lovoo/goka"
 )
 

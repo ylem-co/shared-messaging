@@ -1,4 +1,4 @@
-module github.com/datamin-io/shared-messaging
+module github.com/ylem-co/shared-messaging
 
 go 1.17
 
