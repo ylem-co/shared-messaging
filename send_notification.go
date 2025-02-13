@@ -12,6 +12,7 @@ const (
 	NotificationTypeSms          = "sms"
 	NotificationTypeEmail        = "email"
 	NotificationTypeSlack        = "slack"
+	NotificationTypeWhatsApp     = "whatsapp"
 	NotificationTypeJira         = "jira"
 	NotificationTypeIncidentIo   = "incidentio"
 	NotificationTypeOpsgenie     = "opsgenie"
