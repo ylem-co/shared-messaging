@@ -37,6 +37,7 @@ type SendNotificationTask struct {
 	Body                      string                    `json:"body"`
 	Integration               Integration               `json:"integration"`
 	SlackConfiguration        SlackConfiguration        `json:"slack_configuration"`
+	WhatsAppConfiguration     WhatsAppConfiguration     `json:"whatsapp_configuration"`
 	JiraConfiguration         JiraConfiguration         `json:"jira_configuration"`
 	IncidentIoConfiguration   IncidentIoConfiguration   `json:"incidentio_configuration"`
 	OpsgenieConfiguration     OpsgenieConfiguration     `json:"opsgenie_configuration"`
@@ -53,6 +54,11 @@ type SendNotificationTask struct {
 type SlackConfiguration struct {
 	AccessToken    string `json:"access_token"`
 	SlackChannelId string `json:"slack_channel_id"`
+}
+
+type WhatsAppConfiguration struct {
+	AccountSid  string `json:"account_sid"`
+	AuthToken   string `json:"auth_token"`
 }
 
 type JiraConfiguration struct {
