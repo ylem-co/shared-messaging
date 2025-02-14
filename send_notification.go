@@ -57,8 +57,6 @@ type SlackConfiguration struct {
 }
 
 type WhatsAppConfiguration struct {
-	AccountSid  string `json:"account_sid"`
-	AuthToken   string `json:"auth_token"`
 	ContentSid  string `json:"content_sid"`
 }
 
